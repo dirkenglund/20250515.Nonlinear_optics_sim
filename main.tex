@@ -1,0 +1,161 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+%!BIB TS-program = biber
+\documentclass[floatfix,reprint,superscriptaddress,amsmath,amssymb,aps]{revtex4-2}
+%\documentclass{revtex4-2}
+\usepackage{paper_style}
+
+\date{\today}
+
+\begin{document}
+
+\title{Efficient quantum frequency conversion for networking on the telecom E-band}
+% % 
+\date{\today}
+% % 
+\newcommand\MIT{Research Laboratory of Electronics, Massachusetts Institute of Technology, 50 Vassar Street, Cambridge, MA, USA}
+% % 
+\author{S. M. Patom{\"a}ki}
+\email{patomaki@mit.edu}
+\affiliation{\MIT}
+
+\author{D. R. Englund}
+\affiliation{\MIT}
+
+\author{N. F. Wong}
+\affiliation{\MIT}
+
+\begin{abstract}
+High-efficiency quantum frequency conversion (QFC) for group-IV color centers, such as silicon vacancies (SiV), is required for long-distance quantum networking protocols. SiV QFC has previously been demonstrated at external efficiencies of 12\% [1] and 30\% [2], using periodically poled lithium niobate (PPLN) waveguides of lengths 3.5 and 5 mm, and with efficiencies limited by the available pump power (120 mW and 320 mW, respectively). Here, the efficiency scales with the square of the waveguide length. These results are also obtained with pump wavelength of 1623 nm (L-band), networking the SiV wavelength of 737 nm into the O-band (1350 nm). Here, we improve these results by replacing the pump (L-band in [1],[2]) with a pump with wavelength in the C-band (1561 nm), where (i) high-power erbium-doped fiber amplifiers (EDFAs) are available (ii) SMF-28e fibers have lower losses in the E-band than O-band. Using an EDFA and a 1.5-cm-long PPLN waveguide we measure a maximum external photon conversion efficiency of 43±1.8 \% (corresponding internal efficiency of 96±1.8 \%), which we reach at an external pump power of 1.51 W. The external efficiency is limited by waveguide-fiber coupling. As such, we have demonstrated an external efficiency for SiV-telecom quantum frequency conversion exceeding prior results from MIT, Lincoln Labs, and Harvard. To further improve these results in the future, the waveguide will be replaced with a longer one to reduce the power required to reach unit internal efficiency, which further reduces noise.  We may also optimize fiber coupling or switch to a free-space-coupled device, which we estimate to increase the external conversion efficiency to approx.~$70-80~\%$. 
+\end{abstract}
+
+\maketitle
+% % 
+% % 
+\section{Introduction}
+Long-distance quantum information transfer can be used to build more secure information transfer and networked or modular quantum computation. Minimizing loss of photons is even more crucial for quantum than classical information transfer, as loss can only be mitigated by heralding, i.e. attempting the protocol repeatedly until no loss occurs. Photon loss in silica-based optical fibers is minimized over the wavelength ranges $1260 - 1675$ nm, i.e. the telecom bands (see Fig.~\ref{fig:qfc_on_eband}). 
+\par
+Group-IV color centers in diamond are some of the most promising quantum emitters for quantum memories in long-range quantum information transfer protocols due to their combination of outstanding optical and spin coherence properties and device integrability. As they emit in the visible spectrum, photonic states at emitter wavelengths are converted to-from telecom wavelengths. This quantum frequency conversion (QFC) is achieved e.g. using three-wave mixing, where two photons combine in nonlinear media to produce a third photon at frequencies satisfying $\omega_{e} = \omega_{n} + \omega_{p}$ for emitter, networking, and pump frequencies $\omega_{e}$, $\omega_{n}$, and $\omega_{p}$. 
+\par
+\subfile{Figures/Figure1_QFC_on_Eband}
+A $35$-km two-node quantum networking protocol has already been demonstrated with group-IV silicon vacancy centers (SiV) as quantum memories. Their optical transitions correspond to wavelengths of $\lambda_{\mathrm{SiV}} = 737$ nm. In prior works~\cite{knaut2024entanglement,bersin2024telecom}, the emitter wavelength is converted to $\lambda_{n} = 1350$ nm using an L-band pump wavelength $\lambda_{p} = 1623$ nm, and periodically poled lithium niobate (PPLN) waveguides as the nonlinear medium. The resulting external (internal) sum-frequency generation ($\omega_{n} + \omega_{p} \to \omega_{e}$) photon conversion efficiencies of $12 \%$ ($65 \%$) and $30 \%$ (N/A) have been limited by waveguide efficiencies~\cite{bersin2024telecom},  fiber-waveguide impedance mismatch, and pump power saturation~\cite{knaut2024entanglement}. 
+To address pump power saturation, we switch to a C-band pump wavelength of $\lambda_{p} = 1561$ nm, high-quality, high-power erbium-doped fiber amplifiers (EDFA) are commercially available. This choice of pump frequency sets the networking frequency to E-band at $\lambda_{p} = 1398$ nm. While the older-generation deployed single-mode fiber-28 (SMF-28) absorbs more heavily on the E-band due to a hydroxyl group absorption peak, this peak has been reduced in the newer SMF-28e fibers. As a result, absorption on the E-band $1400$ nm in SMF-28e is comparable and slightly lower than absorption at $1350$ nm in SMF-28. 
+\par
+In this work, we demonstrate how this change in wavelengths leads to a record-high external (internal) sum-frequency generation photon conversion efficiency of $43 \% \pm 1.3 \%$ ($96 \% \pm 1.3 \%$) between a networking and emitter wavelengths of $\lambda_{e} = 1398$ nm and $\lambda_{e} = 737$ nm, respectively.
+% % 
+% % 
+\section{Methods}
+A simplified schematic of the experimental setup for sum frequency generation is shown in Fig.~\ref{fig:setup_schematic}. 
+%(see Fig.~\ref{sup_fig:experiment_photo} for a photograph of the setup). 
+The corresponding components are listed in Table~\ref{tab:component_list}. 
+\par
+For three-wave mixing, we use a custom fiber-coupled ridge PPLN waveguide of length $L = 1.5$ cm from HC Photonics, with periodic poling optimized for our wavelengths (nominally $1405.6$ nm $+ 1550$ nm to $737.1$ nm). Ridge waveguides are formed by precision etching, and handle higher powers compared to proton exchange waveguides. The expected normalized conversion efficiency is given as $\mathrm{NCE} := P_{p} / (L^{2} P_{n} P_{e}) = 207.2$ W/cm$^{2}$. The reported transmission coefficients at the input are $T_{\mathrm{in}\,1405} = 0.558$, $T_{\mathrm{in}\,1550} = 0.642$, and at the output $T_{\mathrm{out}\,737} = 0.899$. These limit the external efficiency to approx. $T_{\mathrm{in}\,1405} T_{\mathrm{out}\,737} = 0.502$.
+% Here, P_{1 in} = network
+% P_{2 in} = pump
+% P_{out} = emitter
+\par
+In this experiment, we amplify a fiber-coupled C-band pump laser at $\lambda_{p} = 1561$ nm, $P = 10$ mW with an EDFA, and couple the resulting free-space light into a fiber-based wavelength combiner. Polarization of the pump light is controlled before and after amplification using fiber paddles, since the amplification and three-wave mixing processes are polarization dependent. Once the amplified pump tone is coupled into fiber and rotated to maximize three-wave mixing at the PPLN crystal, subsequent fibers are polarization maintaining. We orient the polarization and couple in a tunable ($1350 - 1450$ nm, $P = 10$ mW) laser light corresponding to the networking tone into the other input arm of the fiber-coupled wavelength combiner. The PPLN waveguide temperature is controlled in the range $20 - 70$ C. The pump and networking wavelengths are filtered out from the outgoing light with a dichroic filter, and the resulting visible light is measured using a power meter.  
+% % 
+% %
+\subfile{Figures/Figure2_Setup_schematic}
+\begin{center}
+\begin{table}
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{1.0ex}
+\begin{tabular}{lll}
+\toprule
+& \textbf{Instrument} &	\textbf{Model}	
+\\ \midrule
+1 & Pump laser &		Santec WSL-100	
+\\
+2 & \makecell[l]{Erbium-doped fiber\\ amplifier} & \makecell[l]{IPG Photonics EAM-5K \\ 1560-LP-P}
+\\
+3 & Network laser &		Toptica DL-Pro	
+\\
+4 & Wavelength combiner &	WDMQuest W1021-S-1 	
+\\
+5 & \makecell[l]{Periodically poled lithium \\niobate waveguide} & \makecell[l]{HC Photonics\\ }
+\\
+6 & Fiber collimator & Thorlabs F260FC-B 633 
+\\
+7 & Dichroic filter & \makecell[l]{AR-coated for 780 nm \\HR for 1400-1700 nm}
+\\
+8 & Power meter & Thorlabs PM100
+\\ \bottomrule
+\end{tabular}
+\caption{
+\label{tab:component_list}
+\textbf{Components used for the sum-frequency generation experiment of Fig.~\ref{fig:setup_schematic}.} 
+}
+\end{table}
+\end{center}
+% % 
+% % 
+\section{Results}
+To characterize the phase matching of the PPLN waveguide, we measure power at the emitter wavelength as functions of the networking frequency and crystal temperature, at fixed pump power. The results for a low pump-power measurements are shown in Fig.~\ref{fig:conversion_efficiency} \textbf{(a)}. Setting temperature at the globally optimal $T = 55$ C, we study the phase matching condition as a function of the pump power, shown in Fig.~\ref{fig:conversion_efficiency} \textbf{(b)}. Across the powers, we measure a phase-matching bandwidth of $\Delta \lambda_{\mathrm{FWHM}} = 1.0 \pm 0.05$ nm ($\Delta f_{\mathrm{FWHM}} = 154 \pm 8$ GHz). The bandwidth is broadened with respect to the expected $\Delta k \, L /2$, indicating an effective decrease in the waveguide length, caused by destructive interference due to e.g. imperfections in poling. 
+\subfile{Figures/Figure3_Conversion_efficiency}
+\par
+By recording the output power just at the peak for each pump powers allows us to find the pump power where the external conversion efficiency is maximized, and to estimate the external conversion efficiency, as 
+\begin{align}
+\eta_{\mathrm{ext}} = \dfrac{ P_{e} }{ P_{n} } \dfrac{ f_{n} }{ f_{e} },
+\end{align}
+for output and input powers of $P_{e}$ and $P_{n}$, at the emitter and networking frequencies of $f_{e}$ and $f_{n}$, respectively. The resulting data is shown in Fig.~\ref{fig:conversion_efficiency}~\textbf{(c)}. Fitting the resulting external photon conversion efficiency to 
+\begin{align}
+\eta_{\mathrm{ext}}
+&=
+\eta_{\mathrm{ext},\mathrm{max}} \sin^{2} \bigg( \dfrac{\pi}{2} \sqrt{\dfrac{ P }{ P_{\mathrm{max}} }} \bigg),
+\end{align}
+yields $\eta_{\mathrm{ext},\mathrm{max}} = 43\ \% \pm 1.8 \%$ for the best fit. Near the maximal efficiencies, the efficiency deviates from the expected lineshape, yielding the highest measured value of $\eta_{\mathrm{ext},\mathrm{max\,(msmt)}} = 44.5 \%$. In this measurement, we report external pump powers at the fiber before the fiber-coupled waveguide device, and the powers extracted from the output fiber port of the device. That is, losses from the power measurement and the wavelength combiner are not considered, as the power measurement is not part of the QFC scheme, and the wavelength combiner was not optimized for the wavelengths employed. 
+By accounting for the transmission losses due to the device fiber couplings, we estimate the internal photon conversion efficiency to be $\eta_{\mathrm{int},\mathrm{max}} = 96\ \% \pm 1.8 \%$, or $\eta_{\mathrm{int},\mathrm{max\,(msmt)}} = 98.5 \%$.
+\par
+In a separate measurement, where we drive the waveguide solely with pump laser light, we guide the light, notch-filtered at the pump wavelength, into a spectrometer, to estimate the noise spectral density near the networking wavelength. We measure a noise spectral density (NSD) through a bandpass filter around $1405$ nm of $0.033$ counts$/(\mathrm{s} \times \mathrm{GHz} \times \mathrm{mW})$. Scaling the measured NSD to the maximal pump power yields $4913$ counts/s/nm ($32.01$ counts/$(\mathrm{s} \times \mathrm{GHz})$). 
+\\
+%• External conversion efficiency, phase matching map, phase matching 
+%\\
+%• Losses
+%\\
+%• Low-power noise measurements, extrapolation to high power (no figure)
+%Based on low-power measurements, the noise spectral density at $1405$ nm is $0.033$ counts$/(\mathrm{s} \times \mathrm{GHz} \times \mathrm{mW})$. Scaling to $970$ mW input power gives $32.01$ counts/$(\mathrm{s} \times \mathrm{GHz})$. % over 10 ns window
+% % 
+% \begin{center}
+% \begin{table}
+% \renewcommand{\arraystretch}{1.5}
+% \setlength{\tabcolsep}{1.0ex}
+% \begin{tabular}{ll}
+% \toprule
+% \textbf{Component}
+% &
+% \textbf{Transmission}
+% \\ \midrule
+% %\makecell[l]{\textbf{Processor} \vspace{-0.25em}
+% %             \textbf{size}}
+% Net, in & 0.558 % fiber coupling at net wavelength, input
+% \\
+% Pump, in & 0.642 % fiber coupling at pump wavelength, input
+% \\
+% Out & 0.809 % fiber coupling at visible wavelength, output
+% \\
+% Dichroic & 0.988 % 
+% \\
+% Pwr msmt & 0.899
+% \\ \bottomrule
+% \end{tabular}
+% \caption{
+% \label{tab:component_transmissions}
+% \textbf{Test} test
+% }
+% \end{table}
+% \end{center}
+% % 
+% % 
+\section{Conclusions and discussion}
+• Future work: high-power noise measurements; experiment at single-photon level; networking experiment
+\\
+• Suggested improvements for this experiment: longer waveguide (lower Pmax -> less noise), free-space coupling (higher efficiency)
+\\
+(• Similar demonstrations for e.g. SnV or Rubidium - if talking about UQB concepts)
+% % 
+% % 
+% \section{Appendix}
+\bibliography{references.bib}
+\end{document}
